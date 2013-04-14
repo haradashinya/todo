@@ -37,7 +37,7 @@ class Todo(object):
             set task = ?
             where id = ?;
         """
-        self.cur.execute(stmt,(_id,task))
+        self.cur.execute(stmt,(task,_id))
         self.con.commit()
 
 

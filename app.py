@@ -16,12 +16,15 @@ todo.drop_table()
 todo.create_table()
 todo.insert("hello")
 todo.insert("nobinobiru")
-todo.show_todos()
+
 
 
 print todo.where({"task":"nobinobiru"}).fetchone()
 
-print todo.update(1,"hello")
+todo.update(2,"o219")
+
+
+todo.show_todos()
 
 
 
