@@ -9,16 +9,19 @@ from models.todo import  Todo
 manager = Manager()
 manager.connect()
 cur = manager.cur
-
-todo = Todo(cur)
+con = manager.con
+todo = Todo(cur,con)
 print todo.show_version()
 todo.drop_table()
 todo.create_table()
 todo.insert("hello")
-todo.insert("hello")
+todo.insert("nobinobiru")
 todo.show_todos()
-todo.where({"task":"hello"})
 
+
+print todo.where({"task":"nobinobiru"}).fetchone()
+
+print todo.update(1,"hello")
 
 
 

@@ -2,8 +2,9 @@
 
 class Todo(object):
     # bind to sqlite3's cursor.
-    def __init__(self,cur):
+    def __init__(self,cur,con):
         self.cur = cur
+        self.con = con
 
     def show_version(self):
         return self.cur.execute("select sqlite_version()").fetchone()
@@ -30,17 +31,21 @@ class Todo(object):
       d =   self.cur.execute("select * from todos").fetchall()
       print d
 
+    def update(self,_id,task):
+        stmt = """
+        update todos
+            set task = ?
+            where id = ?;
+        """
+        self.cur.execute(stmt,(_id,task))
+        self.con.commit()
+
+
     def where(self,_k):
-        v = "hello"
-
+        k =  _k.keys()[0]
+        v = _k.values()[0]
         statement = """
-        select * from todos where task = :task; """
+        select * from todos where %s = :%s; """ % (k,k)
 
-        self.cur.execute(statement,{"task":"hello"})
-
-        return self
-
-
-
-
-
+        res = self.cur.execute(statement,{k:v})
+        return res
