@@ -23,13 +23,18 @@ class Todo(object):
         drop table if exists todos
         """)
 
+    def delete(self,id):
+        stmt = """
+        """
+        pass
+
 
     def insert(self,task_name):
         self.cur.execute("insert into todos(task) values('%s');" % task_name)
 
     def show_todos(self):
       d =   self.cur.execute("select * from todos").fetchall()
-      print d
+      return d
 
     def update(self,_id,task):
         stmt = """
