@@ -25,7 +25,7 @@ print todo.where({"task":"nobinobiru"}).fetchone()
 todo.update(2,"o219")
 
 
-todo.show_todos()
+print todo.show_todos()
 
 
 
