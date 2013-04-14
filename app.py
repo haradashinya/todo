@@ -8,10 +8,9 @@ from models.todo import  Todo
 # set up manager.
 manager = Manager()
 manager.connect()
-cur = manager.cur
-con = manager.con
-todo = Todo(cur,con)
-print todo.show_version()
+
+# bind cur,con to manager
+todo = Todo(manager.cur,manager.con)
 todo.drop_table()
 todo.create_table()
 todo.insert("hello")
