@@ -9,6 +9,9 @@ class Manager():
             cur.execute("select sqlite_version()")
             data = cur.fetchone()
             co = cur.fetchone()
+            self.cur = cur
+            print "setup"
+
 
 
 
