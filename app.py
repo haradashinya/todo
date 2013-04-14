@@ -11,8 +11,13 @@ manager.connect()
 cur = manager.cur
 
 todo = Todo(cur)
-
 print todo.show_version()
+todo.drop_table()
+todo.create_table()
+todo.insert("hello")
+todo.insert("hello")
+todo.show_todos()
+todo.where({"task":"hello"})
 
 
 
