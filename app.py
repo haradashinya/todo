@@ -16,6 +16,7 @@ todo.drop_table()
 todo.create_table()
 todo.insert("hello")
 todo.insert("nobinobiru")
+todo.insert("foobar0219")
 
 
 

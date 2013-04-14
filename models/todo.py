@@ -9,6 +9,7 @@ class Todo(object):
     def show_version(self):
         return self.cur.execute("select sqlite_version()").fetchone()
 
+
     def create_table(self):
         self.cur.execute("""
         create table if not exists todos(
