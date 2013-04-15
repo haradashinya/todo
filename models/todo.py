@@ -3,13 +3,12 @@ import datetime
 
 class Todo(object):
     # bind to sqlite3's cursor.
-    def __init__(self,cur,con):
-        self.cur = cur
-        self.con = con
+    def __init__(self,manager):
+        self.cur = manager.cur
+        self.con = manager.con
 
     def show_version(self):
         return self.cur.execute("select sqlite_version()").fetchone()
-
 
     def create_table(self):
         self.cur.execute("""

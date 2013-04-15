@@ -7,10 +7,9 @@ from models.todo import  Todo
 
 # set up manager.
 manager = Manager()
-manager.connect()
 
 # bind cur,con to manager
-todo = Todo(manager.cur,manager.con)
+todo = Todo(manager)
 todo.drop_table()
 todo.create_table()
 todo.insert("hello")

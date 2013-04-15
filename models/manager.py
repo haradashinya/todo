@@ -1,8 +1,7 @@
 import sqlite3 as lite
 class Manager():
     def __init__(self):
-        print "init"
-        pass
+        self.connect()
 
     def connect(self):
         self.con = lite.connect("todo.db")
