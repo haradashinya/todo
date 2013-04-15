@@ -25,10 +25,12 @@ class Todo(object):
         drop table if exists todos
         """)
 
-    def delete(self,id):
+    # delete todo from todos table.
+    def delete(self,_id):
         stmt = """
-        """
-        pass
+        delete from todos where id = %i
+        """ % _id
+        self.cur.execute(stmt)
 
 
     def insert(self,task_name):

@@ -16,10 +16,8 @@ todo.create_table()
 todo.insert("hello")
 todo.insert("nobinobiru")
 todo.insert("foobar0219")
+todo.delete(1)
 
-
-
-print todo.where({"task":"nobinobiru"}).fetchone()
 
 todo.update(2,"o219")
 

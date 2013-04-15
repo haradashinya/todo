@@ -6,9 +6,28 @@
 !_TAG_PROGRAM_VERSION	5.8	//
 Manager	app.py	/^from models.manager import Manager$/;"	i
 Manager	models/manager.py	/^class Manager():$/;"	c
+Todo	app.py	/^from models.todo import  Todo$/;"	i
+Todo	models/todo.py	/^class Todo(object):$/;"	c
+User	models/user.py	/^class User(object):$/;"	c
+__init	models/user.py	/^    def __init(self):$/;"	m	class:User	file:
 __init__	models/manager.py	/^    def __init__(self):$/;"	m	class:Manager
+__init__	models/todo.py	/^    def __init__(self,cur,con):$/;"	m	class:Todo
 connect	models/manager.py	/^    def connect(self):$/;"	m	class:Manager
+create_table	models/todo.py	/^    def create_table(self):$/;"	m	class:Todo
+d	num.py	/^                d = sorted([a,b,c])$/;"	v
+data	num.py	/^data = []$/;"	v
+datetime	models/todo.py	/^import datetime$/;"	i
+delete	models/todo.py	/^    def delete(self,_id):$/;"	m	class:Todo
+drop_table	models/todo.py	/^    def drop_table(self):$/;"	m	class:Todo
+insert	models/todo.py	/^    def insert(self,task_name):$/;"	m	class:Todo
 lite	models/manager.py	/^import sqlite3 as lite$/;"	i
 manager	app.py	/^manager = Manager()$/;"	v
+show_todos	models/todo.py	/^    def show_todos(self):$/;"	m	class:Todo
+show_version	models/todo.py	/^    def show_version(self):$/;"	m	class:Todo
 sq	app.py	/^import sqlite3 as sq$/;"	i
 sys	app.py	/^import sys$/;"	i
+todo	app.py	/^todo = Todo(manager.cur,manager.con)$/;"	v
+u	models/user.py	/^u = User()$/;"	v
+uniq	num.py	/^uniq = []$/;"	v
+update	models/todo.py	/^    def update(self,_id,task):$/;"	m	class:Todo
+where	models/todo.py	/^    def where(self,_k):$/;"	m	class:Todo

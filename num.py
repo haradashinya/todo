@@ -1,18 +1,17 @@
 #coding: utf-8
+data = []
+uniq = []
+for a in range(0,100):
+    for b in range(0,100):
+        for c in range(0,100):
+            if a + b + c == 100:
+                d = sorted([a,b,c])
+                if d  not in uniq:
+                    uniq.append(d)
+                    data.append(d)
+                else:
+                    print "already"
 
-def is_prime(n):
-    flag=True
+print len(data)
 
-    if n < 2:
-        flag = False
 
-    for i in range(2,n-1):
-        if n % i == 0:
-            flag = False
-
-    if flag == True:
-        return flag
-
-for i in range(0,2000000):
-    if is_prime(i):
-        print i
