@@ -4,6 +4,7 @@ import datetime
 class Todo(object):
     # bind to sqlite3's cursor.
     def __init__(self,manager):
+        self.stack = {}
         self.cur = manager.cur
         self.con = manager.con
 
@@ -31,6 +32,10 @@ class Todo(object):
         """ % _id
         self.cur.execute(stmt)
 
+    def create(self,arg):
+        keys = arg.keys()
+        for i in keys:
+            self.cur.execute("insert into todos(%s) values('%s');" % (i,arg[i]))
 
     def insert(self,task_name):
         self.cur.execute("insert into todos(task) values('%s');" % task_name)
@@ -39,24 +44,32 @@ class Todo(object):
       d =   self.cur.execute("select * from todos").fetchall()
       return d
 
-    def update(self,_id,task):
+    def find(self,_id):
+        stmt = """
+        select * from todos where id = %i
+        """ % _id
+        self.cur.execute(stmt)
+        self.stack["id"] = _id
+        return self
+
+
+    def update(self,task):
         stmt = """
         update todos
             set task = ?
             where id = ?;
         """
-        self.cur.execute(stmt,(task,_id))
+        self.cur.execute(stmt,(task,self.stack["id"]))
         self.con.commit()
+        self.stack = {}
 
 
-    def where(self,_k):
-        k =  _k.keys()[0]
-        v = _k.values()[0]
-        statement = """
-        select * from todos where %s = :%s; """ % (k,k)
-        self.stack =  self.cur.execute(statement,{k:v})
-        return self
 
-    def obj(self):
-        res = self.stack.fetchone()
-        return self.stack
+    def remove(self):
+        _id = self.stack["id"]
+        stmt = """
+        delete from todos where id = %i
+        """ % _id
+        self.cur.execute(stmt)
+        # set init the stack.
+

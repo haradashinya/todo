@@ -12,15 +12,10 @@ manager = Manager()
 todo = Todo(manager)
 todo.drop_table()
 todo.create_table()
-todo.insert("hello")
-todo.insert("nobinobiru")
-todo.insert("foobar0219")
-todo.delete(1)
-
-
-todo.update(2,"o219")
-print todo.where({"id": 2}).obj()
-
+todo.find(2).remove()
+todo.find(1).update("wash the car")
+todo.create({"task": "bar"})
+todo.create({"task": "hoge"})
 
 print todo.show_todos()
 
