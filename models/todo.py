@@ -54,6 +54,9 @@ class Todo(object):
         v = _k.values()[0]
         statement = """
         select * from todos where %s = :%s; """ % (k,k)
+        self.stack =  self.cur.execute(statement,{k:v})
+        return self
 
-        res = self.cur.execute(statement,{k:v})
-        return res
+    def obj(self):
+        res = self.stack.fetchone()
+        return self.stack

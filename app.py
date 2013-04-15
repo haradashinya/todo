@@ -19,6 +19,7 @@ todo.delete(1)
 
 
 todo.update(2,"o219")
+print todo.where({"id": 2}).obj()
 
 
 print todo.show_todos()
